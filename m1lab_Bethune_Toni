@@ -1,0 +1,144 @@
+# Analyst's Case File
+
+**System analyzed:** DataMan (Texas Instruments, 1977)
+
+**Feature assigned:** Number Guesser
+
+**Source document:** *The Story of DataMan* — manual transcript
+
+---
+
+## 1. Purpose
+
+| Finding | Evidence (exact quote) | Section |
+| --- | --- | --- |
+| Educational game designed to build math skills, number strategy, and logic. | "educational game of number strategy the whole family will enjoy" ... "helps to teach the important basic concept of number betweeness" ... "and number logic." | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+| Intended to teach mathematical estimation and averaging skills. | "The strategy involved in getting to the answer in the fewest tries will help build skills in estimation and averaging." | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+| Entertainment and skill sharpening for families or individuals. | "As you play Number Guesser with your family or friends (or just by yourself), you'll be sharpening your math skills." | Number Guesser (Story)
+
+ |
+
+---
+
+## 2. Users and Roles
+
+| Role | What this role does | Evidence (exact quote) | Section |
+| --- | --- | --- | --- |
+| Primary Player / Guesser | Enters numerical guesses into the system to find the secret number. | "You enter your guess." | Number Guesser (Story)
+
+ |
+| Competitor / Game Companion | Takes turns with the primary player to see who can guess the number in the fewest attempts. | "Take turns with your friends trying to guess the secret number in the fewest tries." | Number Guesser (Story)
+
+ |
+
+---
+
+## 3. Inputs
+
+| Input | Supplied by | Evidence (exact quote) | Section |
+| --- | --- | --- | --- |
+| Keypress: [ON] | Player | "first turn DataMan on with the ON key" | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+| Keypress: [NUMBER GUESSER] / [???] | Player | "press ON and the Number Guesser key: [???]" | Number Guesser (Story)
+
+ |
+| Player's Guess (Number entry) | Player / Guesser | "As you enter each guess" | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+
+---
+
+## 4. Processing
+
+| Rule or behavior | Evidence (exact quote) | Section |
+| --- | --- | --- |
+| System generates a secret number within the fixed range of 9 to 100. | "I'll pick a secret number for you to guess. It will be somewhere between 9 and 100." | Number Guesser (Story)
+
+ |
+| System generates a new secret target number upon each keypress of the feature button. | "I'll pick a new secret number each time you press [???]" | Number Guesser (Story)
+
+ |
+| System tracks and tallies the total number of attempts taken to reach the correct answer. | "displays the total number of guesses that were taken." | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+
+---
+
+## 5. Outputs
+
+| Output | When it appears | Evidence (exact quote) | Section |
+| --- | --- | --- | --- |
+| Range hint (Two bounding numbers) | Immediately after each guess is entered. | "As you enter each guess, DataMan provides a hint by displaying two numbers that the secret number is between." | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+| Total guess tally | Displayed when the secret number is correctly guessed. | "When the secret number is found... displays the total number of guesses that were taken." | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+
+---
+
+## 6. Feedback
+
+| Feedback behavior | What it tells the user | Evidence (exact quote) | Section |
+| --- | --- | --- | --- |
+| Display flashes with two numbers | Evaluates the user's guess by bounding the secret number to guide the next guess. | "When you do, I'll flash and show you two numbers in my face mask. The secret number is always somewhere between the two numbers I show you." | Number Guesser (Story)
+
+ |
+| Spectacular "light show" display | Celebrates and rewards finding the correct secret number. | "When the secret number is found, DataMan rewards you with a spectacular 'light show'" | Electro Flash · Number Guesser · Wipe Out (Operating Notes)
+
+ |
+
+---
+
+## 7. Observations and Assumptions
+
+| Statement | Observation or assumption? | What evidence would settle it? |
+| --- | --- | --- |
+| The range of 9 to 100 is inclusive of both 9 and 100. | Assumption | An explicit statement in the operating notes defining whether the boundary is inclusive ($9 \le x \le 100$) or exclusive ($9 < x < 100$). |
+| The hint display dynamically updates the lower and upper bounds based on the player's highest lower guess and lowest upper guess. | Assumption | System specification or algorithm description explaining whether the hint updates standard binary-search bounds or displays fixed arbitrary boundaries. |
+| Entering invalid keypresses (such as operation keys like + or −) triggers an "EEE" error display. | Assumption | Observation of physical hardware or explicit documentation detailing error handling for non-numeric keystrokes during Number Guesser mode. |
+
+---
+
+## 8. Unknowns and Open Questions
+
+| Open question | Where I looked | Why the manual does not answer it |
+| --- | --- | --- |
+| Are the secret boundary numbers 9 and 100 inclusive or exclusive? | *Number Guesser (Story)* and *Electro Flash · Number Guesser · Wipe Out (Operating Notes)* | The manual only states "somewhere between 9 and 100" without technical precision regarding boundary conditions.
+
+ |
+| Does entering a number outside the 9–100 range produce an error display or consume a turn attempt? | Both Part I (*Number Guesser (Story)*) and Part II (*Answer Checker*, *Electro Flash · Number Guesser · Wipe Out (Operating Notes)*) | The manual details digit limits for *Answer Checker* (1-2 digits for problems, 1-3 for answers) but provides no entry constraints or validation rules for guesses in *Number Guesser*.
+
+ |
+| Is there a maximum cap on the total number of guesses allowed before the game resets or times out? | *Number Guesser (Story)* and *Electro Flash · Number Guesser · Wipe Out (Operating Notes)* | The documentation only describes game resolution upon finding the number; it does not state whether a turn limit or timeout mechanism exists.
+
+ |
+
+---
+
+## 9. Cross-Register Note
+
+**What differs:**
+
+Part I describes the visual appearance of the game's range hints, while Part II explicitly defines the educational concept being taught by that same display mechanism.
+
+**Part I says (quote):**
+
+"When you do, I'll flash and show you two numbers in my face mask. The secret number is always somewhere *between* the two numbers I show you."
+
+**Part II says (quote), or is silent:**
+
+"Number Guesser helps to teach the important basic concept of *number betweeness* (the unknown secret number is always *between* the two numbers shown in DataMan's display) and number logic."
+
+**Why this matters to an analyst:**
+
+Part I gives the raw operational feedback from the system's interface perspective (what the display screen literally flashes to the child). Part II explains the underlying pedagogical requirement and functional domain rationale (*why* the system presents bounds rather than high/low indicators). An analyst relying solely on Part I understands the UI behavior but misses the underlying business logic and learning objectives driving feature design; relying solely on Part II provides the abstract requirement while leaving UI feedback details underspecified.
+
+---
+
+Would you like to explore how to extend this case file format to analyze another feature, such as *Wipe Out* or *Force Out*?
