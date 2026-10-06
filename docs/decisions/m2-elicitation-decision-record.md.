@@ -1,0 +1,43 @@
+# M2 Elicitation Decision Record
+
+## Investigation Path
+1. What exactly do stakeholders mean by “students shouldn’t lose their work”?
+   Evidence revealed: Teachers report that students may pause practice and return later. They want a learner’s saved practice state to remain available after leaving and returning to the application.
+2. Which original DataMan behaviors are considered essential to preserve?
+   Evidence revealed: Stakeholders identify immediate answer feedback, repeated practice after an incorrect response, and a clear way for learners to see progress as central to the original experience.
+3. What do parents or teachers need to understand about learner activity?
+   Evidence revealed: Adults want to understand what the learner practiced and whether progress is occurring, but stakeholders have not yet agreed on a detailed reporting dashboard.
+
+## Initial Position
+**Supported evidence:**
+Students may leave a practice session and return later, so their saved practice state needs to remain available. The system should also preserve important DataMan behaviors such as immediate feedback, repeated practice after incorrect answers, and a way for learners to see their progress. Adults also need to understand what the learner practiced and whether progress is being made.
+
+**Remaining uncertainty:**
+It is still unclear exactly what information parents and teachers need to see and how that information should be presented. The stakeholders have not agreed on a detailed reporting dashboard.
+
+**Likely functional requirement:**
+The system must preserve a learner’s saved practice state when the learner leaves the application and make it available when the learner returns.
+
+**Likely non-functional requirement / quality constraint:**
+The system must present learner progress information in a way that is understandable to learners and supporting adults.
+
+**Assumption or proposed solution I am not treating as confirmed:**
+A detailed parent and teacher reporting dashboard is not being treated as a confirmed requirement because stakeholders have not agreed that a dashboard is necessary.
+
+**Why my initial position is defensible:**
+My position is defensible because each proposed requirement is based on evidence gathered from stakeholders instead of assumptions about what the system should include. Areas that still need clarification are being kept separate from confirmed requirements rather than choosing a solution before the need is fully understood.
+
+## Complication
+Students may use DataMan on school Chromebooks, phones, tablets, and home computers. Some sessions may be interrupted before intentional sign-out.
+
+**What this affects:**
+The new information affects the requirement for preserving a learner’s practice state. Since students may use different devices and their sessions may be interrupted unexpectedly, their work needs to remain available even when they do not intentionally sign out.
+
+**What I revised, if anything:**
+I would revise the functional requirement to state: The system must preserve a learner’s saved practice state when a session ends or is interrupted and make that state available when the learner returns to the application.
+
+**Final decision and reasoning:**
+My final decision is to revise the requirement. The new information shows that students may not always leave the application intentionally and may access DataMan from different types of devices. Revising the requirement addresses interrupted sessions without assuming a specific technical solution for how the practice state will be saved.
+
+## Next Project Action
+Use this evidence to update the DataMan Requirements Register and preserve any unresolved questions as open assumptions or follow-up items.
